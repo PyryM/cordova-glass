@@ -1,4 +1,4 @@
-cordova.define("com.rossgerbasi.cordova.plugins.glass.Glass", function(require, exports, module) { var exec = require("cordova/exec");
+var exec = require("cordova/exec");
 
 /**
  * Constructor.
@@ -43,6 +43,22 @@ Glass.prototype.getLaunchParams = function (successCallback, errorCallback) {
     exec(successCallback, errorCallback, 'Glass', 'get_launch_params', []);
 };
 
+/**
+ * Invokes the speech recognition activity and returns the result
+ *
+ *
+ *  com.rossgerbasi.cordova.glass.core.doSpeechRecognition(
+ *      function(text) {
+ *          console.log("Got recognized text: " + text);
+ *      },
+ *      function () {
+ *          console.log("Error getting recognized text.");
+ *      }
+ *  );
+ *
+ * @param successCallback only returned parameter is recognized speech as a string
+ * @param errorCallback
+ */
 Glass.prototype.doSpeechRecognition = function (successCallback, errorCallback) {
     if (errorCallback == null) {
         errorCallback = function () {
@@ -63,4 +79,3 @@ Glass.prototype.doSpeechRecognition = function (successCallback, errorCallback) 
 }
 
 module.exports = new Glass();
-});
